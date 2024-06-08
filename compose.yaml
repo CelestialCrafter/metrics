@@ -1,0 +1,36 @@
+services:
+  grafana: 
+    image: grafana/grafana
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - metrics
+    depends_on:
+      - telegraf
+  telegraf:
+    image: telegraf
+    hostname: telegraf
+    ports:
+      - 8125:8125
+    restart: always
+    networks:
+      - metrics
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    depends_on:
+      - prometheus
+  prometheus:
+    image: prom/prometheus
+    hostname: prometheus
+    user: 1000:100
+    ports:
+      - 9090:9090
+    restart: always
+    networks:
+      - metrics
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./data:/prometheus
+networks:
+  metrics:

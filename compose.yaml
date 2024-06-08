@@ -2,10 +2,13 @@ services:
   grafana: 
     image: grafana/grafana
     restart: always
+    user: 1000:100
     ports:
       - 3000:3000
     networks:
       - metrics
+    volumes:
+      - ./data/grafana:/var/lib/grafana
     depends_on:
       - telegraf
   telegraf:
@@ -31,6 +34,6 @@ services:
       - metrics
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
-      - ./data:/prometheus
+      - ./data/prometheus:/prometheus
 networks:
   metrics:

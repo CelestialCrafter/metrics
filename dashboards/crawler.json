@@ -24,7 +24,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddo5bhzoujev4d"
+        "uid": "cdo5htrck0xz4c"
       },
       "fieldConfig": {
         "defaults": {
@@ -75,7 +75,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddo5bhzoujev4d"
+            "uid": "cdo5htrck0xz4c"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
@@ -95,7 +95,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddo5bhzoujev4d"
+        "uid": "cdo5htrck0xz4c"
       },
       "fieldConfig": {
         "defaults": {
@@ -146,13 +146,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddo5bhzoujev4d"
+            "uid": "cdo5htrck0xz4c"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
-          "exemplar": false,
           "expr": "crawler_fetch_median",
-          "format": "time_series",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -168,7 +166,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddo5bhzoujev4d"
+        "uid": "cdo5htrck0xz4c"
       },
       "fieldConfig": {
         "defaults": {
@@ -248,7 +246,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddo5bhzoujev4d"
+            "uid": "cdo5htrck0xz4c"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
@@ -268,7 +266,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddo5bhzoujev4d"
+        "uid": "cdo5htrck0xz4c"
       },
       "fieldConfig": {
         "defaults": {
@@ -348,7 +346,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddo5bhzoujev4d"
+            "uid": "cdo5htrck0xz4c"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
@@ -368,7 +366,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddo5bhzoujev4d"
+        "uid": "cdo5htrck0xz4c"
       },
       "fieldConfig": {
         "defaults": {
@@ -448,7 +446,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddo5bhzoujev4d"
+            "uid": "cdo5htrck0xz4c"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
@@ -481,6 +479,6 @@
   "timezone": "browser",
   "title": "Crawler",
   "uid": "fdo5fcq6x7l6od",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }

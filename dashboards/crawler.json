@@ -693,6 +693,35 @@
         }
       ],
       "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-pyroscope-datasource",
+        "uid": "ddr2z3dox85q8d"
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 9,
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-pyroscope-datasource",
+            "uid": "ddr2z3dox85q8d"
+          },
+          "groupBy": [],
+          "labelSelector": "{service_name=\"crawler\"}",
+          "profileTypeId": "memory:inuse_space:bytes:space:bytes",
+          "queryType": "profile",
+          "refId": "A",
+          "spanSelector": []
+        }
+      ],
+      "title": "In-Use Memory",
+      "type": "flamegraph"
     }
   ],
   "refresh": "5s",

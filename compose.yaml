@@ -1,5 +1,14 @@
+---
 services:
-  grafana: 
+  pyroscope:
+    image: grafana/pyroscope
+    restart: always
+    hostname: pyroscope
+    ports:
+      - 4040:4040
+    networks:
+      - metrics
+  grafana:
     image: grafana/grafana
     restart: always
     ports:
@@ -8,18 +17,6 @@ services:
       - metrics
     volumes:
       - ./data/grafana:/var/lib/grafana
-    depends_on:
-      - telegraf
-  telegraf:
-    image: telegraf
-    hostname: telegraf
-    ports:
-      - 8125:8125
-    restart: always
-    networks:
-      - metrics
-    volumes:
-      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
     depends_on:
       - prometheus
   prometheus:
@@ -30,8 +27,18 @@ services:
     restart: always
     networks:
       - metrics
+    depends_on:
+      - pushgateway
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - ./data/prometheus:/prometheus
+  pushgateway:
+    image: prom/pushgateway
+    hostname: pushgateway
+    ports:
+      - 9091:9091
+    restart: always
+    networks:
+      - metrics
 networks:
   metrics:

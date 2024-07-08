@@ -49,7 +49,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 10,
+        "h": 8,
         "w": 6,
         "x": 0,
         "y": 0
@@ -78,8 +78,8 @@
             "uid": "bdo5me7rczv28b"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "crawler_parse_median",
+          "editorMode": "code",
+          "expr": "crawler_parse{quantile=\"0.5\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -120,7 +120,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 10,
+        "h": 8,
         "w": 6,
         "x": 6,
         "y": 0
@@ -150,7 +150,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "crawler_fetch_median",
+          "expr": "crawler_fetch{quantile=\"0.5\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -191,7 +191,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 10,
+        "h": 8,
         "w": 6,
         "x": 12,
         "y": 0
@@ -236,45 +236,13 @@
     },
     {
       "datasource": {
-        "type": "prometheus",
-        "uid": "bdo5me7rczv28b"
+        "type": "grafana-pyroscope-datasource",
+        "uid": "ddr2z3dox85q8d"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
+            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
@@ -299,140 +267,52 @@
         "x": 18,
         "y": 0
       },
-      "id": 5,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "maxHeight": 600,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "bdo5me7rczv28b"
-          },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "rate(process_cpu_seconds_total[$__rate_interval])",
-          "fullMetaSearch": false,
-          "includeNullMetadata": false,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "CPU seconds /rate",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "bdo5me7rczv28b"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 6,
-        "x": 18,
-        "y": 8
-      },
       "id": 2,
       "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
         },
-        "tooltip": {
-          "maxHeight": 600,
-          "mode": "single",
-          "sort": "none"
-        }
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "bdo5me7rczv28b"
+            "type": "grafana-pyroscope-datasource",
+            "uid": "ddr2z3dox85q8d"
           },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "performance_runtime_alloc_bytes * 0.000001",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
+          "groupBy": [],
+          "labelSelector": "{service_name=\"crawler\"}",
+          "profileTypeId": "memory:alloc_space:bytes:space:bytes",
+          "queryType": "profile",
           "refId": "A",
-          "useBackend": false
+          "spanSelector": []
         }
       ],
       "title": "Memory (mb)",
-      "type": "timeseries"
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "stat"
     },
     {
       "datasource": {
@@ -497,7 +377,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 10
+        "y": 8
       },
       "id": 8,
       "options": {
@@ -520,8 +400,8 @@
             "uid": "bdo5me7rczv28b"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "crawler_parse_median",
+          "editorMode": "code",
+          "expr": "crawler_parse{quantile=\"0.5\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -597,7 +477,7 @@
         "h": 8,
         "w": 6,
         "x": 6,
-        "y": 10
+        "y": 8
       },
       "id": 7,
       "options": {
@@ -620,8 +500,8 @@
             "uid": "bdo5me7rczv28b"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "crawler_fetch_median",
+          "editorMode": "code",
+          "expr": "crawler_fetch{quantile=\"0.5\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -697,7 +577,7 @@
         "h": 8,
         "w": 6,
         "x": 12,
-        "y": 10
+        "y": 8
       },
       "id": 6,
       "options": {
@@ -733,6 +613,86 @@
       ],
       "title": "Crawls (s)",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "grafana-pyroscope-datasource",
+        "uid": "ddr2z3dox85q8d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 8
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-pyroscope-datasource",
+            "uid": "ddr2z3dox85q8d"
+          },
+          "groupBy": [],
+          "labelSelector": "{service_name=\"crawler\"}",
+          "profileTypeId": "process_cpu:cpu:nanoseconds:cpu:nanoseconds",
+          "queryType": "profile",
+          "refId": "A",
+          "spanSelector": []
+        }
+      ],
+      "title": "CPU seconds /rate",
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "stat"
     }
   ],
   "refresh": "5s",
@@ -750,6 +710,6 @@
   "timezone": "browser",
   "title": "Crawler",
   "uid": "fdo5fcq6x7l6od",
-  "version": 1,
+  "version": 4,
   "weekStart": ""
 }

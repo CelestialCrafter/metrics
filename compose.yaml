@@ -27,18 +27,8 @@ services:
     restart: always
     networks:
       - metrics
-    depends_on:
-      - pushgateway
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ../prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - ./data/prometheus:/prometheus
-  pushgateway:
-    image: prom/pushgateway
-    hostname: pushgateway
-    ports:
-      - 9091:9091
-    restart: always
-    networks:
-      - metrics
 networks:
   metrics:
